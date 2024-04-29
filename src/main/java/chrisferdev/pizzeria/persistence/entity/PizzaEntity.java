@@ -35,5 +35,8 @@ public class PizzaEntity {
     private Boolean vegetarian;
 
     @Column(columnDefinition = "TINYINT", nullable = false)
+    private Boolean vegan;
+
+    @Column(columnDefinition = "TINYINT", nullable = false)
     private Boolean available;
 }
