@@ -27,7 +27,7 @@ public class PizzaService {
     }
 
     public PizzaEntity getByName(String name){
-        return this.pizzaRepository.findAllByAvailableTrueAndNameIgnoraCase(name);
+        return this.pizzaRepository.findAllByAvailableTrueAndNameIgnoreCase(name);
     }
 
     public PizzaEntity get(int idPizza){
