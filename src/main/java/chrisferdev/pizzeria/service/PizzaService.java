@@ -28,10 +28,13 @@ public class PizzaService {
 
     public PizzaEntity getByName(String name){
         return this.pizzaRepository.findAllByAvailableTrueAndNameIgnoreCase(name);
+<<<<<<< HEAD
     }
 
     public List<PizzaEntity> getWith(String ingredient){
         return this.pizzaRepository.findAllByAvailableTrueAndDescriptionContainingIgnoreCase(ingredient);
+=======
+>>>>>>> 2faae9e6932e11e4f5ad7c50321d5465563538fc
     }
 
     public PizzaEntity get(int idPizza){
