@@ -2,6 +2,7 @@ package chrisferdev.pizzeria.controller;
 
 import java.util.List;
 
+import chrisferdev.pizzeria.persistence.entity.OrderEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,6 +54,11 @@ public class PizzaController {
     @GetMapping("/without/{ingredient}")
     public ResponseEntity<List<PizzaEntity>> getWithout(@PathVariable String ingredient){
         return ResponseEntity.ok(this.pizzaService.getWithout(ingredient));
+    }
+
+    @GetMapping("/cheapest/{price}")
+    public ResponseEntity<List<PizzaEntity>> getCheapestPizzas(@PathVariable double price){
+        return ResponseEntity.ok(this.pizzaService.getCheapest(price));
     }
 
     @PostMapping
