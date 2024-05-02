@@ -4,12 +4,14 @@ import java.util.List;
 
 import chrisferdev.pizzeria.persistence.repository.PizzaPagSortRepository;
 import chrisferdev.pizzeria.service.dto.UpdatePizzaPriceDto;
-import jakarta.transaction.Transactional;
+import chrisferdev.pizzeria.service.exception.EmailApiException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import chrisferdev.pizzeria.persistence.entity.PizzaEntity;
 import chrisferdev.pizzeria.persistence.repository.PizzaRepository;
@@ -68,9 +70,14 @@ public class PizzaService {
         this.pizzaRepository.deleteById(idPizza);
     }
 
-    @Transactional
+    @Transactional(noRollbackFor = EmailApiException.class)
     public void updatePrice(UpdatePizzaPriceDto dto){
         this.pizzaRepository.updatePrice(dto);
+        this.sendEmail();
+    }
+
+    private void sendEmail(){
+        throw new EmailApiException();
     }
 
     public boolean exists(int idPizza){
