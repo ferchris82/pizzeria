@@ -3,6 +3,8 @@ package chrisferdev.pizzeria.service;
 import java.util.List;
 
 import chrisferdev.pizzeria.persistence.repository.PizzaPagSortRepository;
+import chrisferdev.pizzeria.service.dto.UpdatePizzaPriceDto;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -64,6 +66,11 @@ public class PizzaService {
 
     public void delete(int idPizza){
         this.pizzaRepository.deleteById(idPizza);
+    }
+
+    @Transactional
+    public void updatePrice(UpdatePizzaPriceDto dto){
+        this.pizzaRepository.updatePrice(dto);
     }
 
     public boolean exists(int idPizza){
